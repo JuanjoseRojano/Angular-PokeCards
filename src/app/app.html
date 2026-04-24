@@ -1,0 +1,42 @@
+<main class="main">
+  <div class="mainContainer">
+    <div class="formCards">
+      <h1>Search and add your pokemon.</h1>
+      <form>
+
+        <label for="">Search pokemon by name.</label>
+        <input type="text" name="pokemonName" [(ngModel)]="pokemonName"/>
+        <button type="button" (click)="searchPokemon(pokemonName)" >Search pokemon</button>
+
+      </form>
+
+      <div class="cardTypeContainer">
+        <button class="buttonCardType" [disabled]="controlEnableButtons === false" (click)="changeCard(0)">{{buttonCardType1}}</button>
+        <button class="buttonCardType" [disabled]="controlEnableButtons === false" (click)="changeCard(1)">{{buttonCardType2}}</button>
+        <button class="buttonCardType" [disabled]="controlEnableButtons === false" (click)="changeCard(2)">{{buttonCardType3}}</button>
+      </div>
+
+      @if(controlShowMainCard){
+
+        <app-poke-cards [choosenCardPokemon]="choosenCardPokemon"></app-poke-cards>
+      } @else if(!controlShowMainCard){
+
+        <app-empty-card [changeEmptyCard]="changeEmptyCard" (changeChoosenPokemon)="changeChoosenPokemon($event)"></app-empty-card>
+      }
+
+        <button [disabled]="choosenCardPokemon === ''" (click)="addCardOnTeam()">Add card</button>
+    </div>
+
+
+    
+    <div class="pokeTeam">
+
+      <!-- <app-poke-team (refreshList)="refreshList($event)"></app-poke-team> -->
+      <app-poke-team [choosenCardPokemon]="choosenCardPokemon" [flagAddNewCard]="flagAddNewCard"></app-poke-team>
+
+    </div>
+      
+  </div>
+</main>
+
+<router-outlet />

@@ -1,0 +1,21 @@
+.mainContainerTeam {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.emptyCardMainContainer {
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.imgEmptyCard {
+    
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+}

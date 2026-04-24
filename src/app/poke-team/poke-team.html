@@ -1,0 +1,31 @@
+<div class="mainContainerTeam">
+
+    <h1>Pokemon Deck.</h1>
+    @if(pokeCardSelected != null){
+
+        <app-poke-cards [choosenCardPokemon]="idListOfTeamPokemon[pokeCardSelected]"></app-poke-cards>
+
+        <div>
+        <button (click)="prevPokeCard()" [disabled]="!controlChangePokeCardSelected || pokeCardSelected === null || (pokeCardSelected !== null && pokeCardSelected <= 0)">Pag 1-{{idFocusPokeCard}} &lt;</button>
+        <button (click)="deletePokeCard()" [disabled]="!controlDeletePokeCardSelected || pokeCardSelected === null">Delete</button>
+
+        @if(idListOfTeamPokemon.length != 0){
+
+            <button (click)="nextPokeCard()" [disabled]="!controlChangePokeCardSelected || pokeCardSelected === null || (pokeCardSelected !== null && pokeCardSelected >= idListOfTeamPokemon.length-1)">&gt; Pag {{idFocusPokeCard}}-{{idListOfTeamPokemon.length}}</button>
+        } @else {
+
+            <button (click)="nextPokeCard()" [disabled]="!controlChangePokeCardSelected || pokeCardSelected === null || (pokeCardSelected !== null && pokeCardSelected >= idListOfTeamPokemon.length-1)">&gt; Pag {{idFocusPokeCard}}-100</button>
+        }
+    </div>
+
+    } @else {
+        <div class="emptyCardMainContainer">
+            <img src="images/Pokeball.png" class="imgEmptyCard">
+        </div>
+    }
+
+
+
+</div>
+
+
